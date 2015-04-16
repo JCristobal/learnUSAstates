@@ -1,0 +1,29 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+}
+
+body{
+
+	background: url(../img/fondo.png) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+} 
+
+.theme-dropdown .dropdown-menu {
+	position: static;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+	margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+	width: 33%;
+}
+

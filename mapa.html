@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset=utf-8 />
+      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+      <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
+      <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
+      <meta name="description" content="Map of learnUSstates">
+      <meta name="author" content="Jcristobal">
+      <link rel="icon" href="img/icon.png">
+
+      <title>learnUSstates</title>
+
+      <!-- Custom style for this page -->
+      <link href="css/style_map.css" rel="stylesheet">
+  </head>
+
+  <body >
+
+      <!--
+        This example requires jQuery to load the file with AJAX.
+        You can use another tool for AJAX.
+
+        This pulls the file airports.csv, converts into into GeoJSON by autodetecting
+        the latitude and longitude columns, and adds it to the map.
+
+        Another CSV that you use will also need to contain latitude and longitude
+        columns, and they must be similarly named.
+      -->
+
+      <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+      <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'></script>
+
+      <div class="question"  > ------------ </div>
+      <div class="index"  > <a href="index.html"> INICIO </a> </div>
+
+      <div id="map"></div>
+      <div id="state" class="state"></div>
+
+      <script>
+      L.mapbox.accessToken = 'pk.eyJ1IjoiamNyaXN0b2JhbCIsImEiOiJPSThSUV9jIn0.m-kxm7LLy_irp3Of5OkSVA';
+      var state = document.getElementById('state');
+      var map = L.mapbox.map('map', 'jcristobal.lo5ibb1l') 
+          .setView([40, -110], 4);
+
+      $.ajax({
+          url: 'data/us-states.geojson',
+          dataType: 'json',
+          success: function load(d) {
+              var states = L.geoJson(d).addTo(map);
+              L.marker([38, -102], {
+                  icon: L.mapbox.marker.icon({
+                      //'iconUrl': 'img/interrogacion.png',
+                      'marker-color': '#FF0000'
+                  }),
+                  draggable: true
+              }).addTo(map)
+              .on('dragend', function(e) {
+                  var layer = leafletPip.pointInLayer(this.getLatLng(), states, true);
+                  if (layer.length) {
+                    state.innerHTML = '<strong>' + layer[0].feature.properties.name + '</strong>';
+
+                    //alert(layer[0].feature.properties.name);
+
+                  } else {
+                    state.innerHTML = '';
+                  }
+              });
+          }
+      });
+      </script>
+
+  </body>
+
+</html>
