@@ -36,7 +36,8 @@ body {
 
 .index {
 	position:absolute;
-	top:60%;
+	top: 15%;
+	/*top:60%;*/
 	left:10px;
 	z-index:1000;
 
@@ -45,4 +46,18 @@ body {
 	display:block;
 	padding:10px;
 	border-radius:3px;
+}
+
+.puntuacion {
+	position:absolute;
+	top:70%;
+	left:10px;
+	z-index:1000;
+
+	background:#Ff0000;
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
 }

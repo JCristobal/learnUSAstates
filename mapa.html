@@ -31,7 +31,12 @@
       <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'></script>
 
-      <div class="question"  > ------------ </div>
+      <div class="question"  >  
+        <p> ??? </p>
+        <p>  respuesta </p>
+      </div>
+      <div class="puntuacion" id="puntuacion">Puntuación</div>
+
       <div class="index"  > <a href="index.html"> INICIO </a> </div>
 
       <div id="map"></div>
@@ -39,10 +44,15 @@
 
       <script>
       L.mapbox.accessToken = 'pk.eyJ1IjoiamNyaXN0b2JhbCIsImEiOiJPSThSUV9jIn0.m-kxm7LLy_irp3Of5OkSVA';
-      var state = document.getElementById('state');
+      var state = document.getElementById("state");
       var map = L.mapbox.map('map', 'jcristobal.lo5ibb1l') 
           .setView([40, -110], 4);
 
+      var respuesta = "Colorado";
+      var puntos = 0;
+      var puntuacion = document.getElementById("puntuacion");
+
+          
       $.ajax({
           url: 'data/us-states.geojson',
           dataType: 'json',
@@ -58,9 +68,12 @@
               .on('dragend', function(e) {
                   var layer = leafletPip.pointInLayer(this.getLatLng(), states, true);
                   if (layer.length) {
-                    state.innerHTML = '<strong>' + layer[0].feature.properties.name + '</strong>';
+                    state.innerHTML = "<strong>" + layer[0].feature.properties.name + "</strong>";
 
-                    //alert(layer[0].feature.properties.name);
+                    if(layer[0].feature.properties.name == respuesta) { puntos++; }
+                    else{ puntos--; }
+                    
+                    puntuacion.innerHTML = "Puntuación: <strong>" + puntos + "</strong>"; 
 
                   } else {
                     state.innerHTML = '';
