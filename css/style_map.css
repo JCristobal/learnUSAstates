@@ -21,19 +21,6 @@ body {
 	border-radius:3px;
 }
 
-.question {
-	position:absolute;
-	top:50%;
-	left:10px;
-	z-index:1000;
-
-	background:#F57C00;
-	color:#000;
-	display:block;
-	padding:10px;
-	border-radius:3px;
-}
-
 .index {
 	position:absolute;
 	top: 15%;
@@ -46,6 +33,38 @@ body {
 	display:block;
 	padding:10px;
 	border-radius:3px;
+}
+.index a {
+	text-decoration: none;
+	color: black;
+}
+
+.pregunta {
+	position:absolute;
+	top:50%;
+	left:10px;
+	z-index:1000;
+
+	background:#F57C00;
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+}
+
+
+.respuesta {
+	position:absolute;
+	top:60%;
+	left:10px;
+	z-index:1000;
+
+	background:#Ff0000;
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
 }
 
 .puntuacion {

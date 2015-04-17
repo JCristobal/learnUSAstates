@@ -5,11 +5,11 @@
       <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
       <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
       <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
-      <meta name="description" content="Map of learnUSstates">
+      <meta name="description" content="Map of learnUSAstates">
       <meta name="author" content="Jcristobal">
       <link rel="icon" href="img/icon.png">
 
-      <title>learnUSstates</title>
+      <title>learnUSAstates</title>
 
       <!-- Custom style for this page -->
       <link href="css/style_map.css" rel="stylesheet">
@@ -31,16 +31,16 @@
       <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'></script>
 
-      <div class="question"  >  
-        <p> ??? </p>
-        <p>  respuesta </p>
-      </div>
-      <div class="puntuacion" id="puntuacion">Puntuación</div>
-
       <div class="index"  > <a href="index.html"> INICIO </a> </div>
 
+      <div  >  
+        <p>  <div class="pregunta" id="pregunta"></div> </p>
+        <p>  <div class="respuesta" id="respuesta"></div> </p>
+        <p>  <div class="puntuacion" id="puntuacion">Puntuación</div> </p>
+      </div>
+
       <div id="map"></div>
-      <div id="state" class="state"></div>
+      <div id="state" class="state"></div>  <!-- Inhabilitado: Muestra el estado en la esquina superior derecha -->
 
       <script>
       L.mapbox.accessToken = 'pk.eyJ1IjoiamNyaXN0b2JhbCIsImEiOiJPSThSUV9jIn0.m-kxm7LLy_irp3Of5OkSVA';
@@ -48,9 +48,22 @@
       var map = L.mapbox.map('map', 'jcristobal.lo5ibb1l') 
           .setView([40, -110], 4);
 
-      var respuesta = "Colorado";
+
+      var preguntas = ["Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska"]; 
+      var respuestas = ["Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska"]; 
+
+      // Generamos la primera pregunta y respuesta
+      var num = Math.round(Math.random()*10);
+      var pregunta = preguntas[num];         
+      var campo_pregunta = document.getElementById("pregunta");
+      campo_pregunta.innerHTML = " <strong>" + pregunta + "</strong>"; 
+      var respuesta = respuestas[num];         
+      var campo_respuesta = document.getElementById("respuesta");
+      campo_respuesta.innerHTML = " Pulsa para pista ";
+
       var puntos = 0;
       var puntuacion = document.getElementById("puntuacion");
+      var extra = true; // Gestiona la "pista", con la pista mostrada pasa a "false"
 
           
       $.ajax({
@@ -68,19 +81,39 @@
               .on('dragend', function(e) {
                   var layer = leafletPip.pointInLayer(this.getLatLng(), states, true);
                   if (layer.length) {
-                    state.innerHTML = "<strong>" + layer[0].feature.properties.name + "</strong>";
-
-                    if(layer[0].feature.properties.name == respuesta) { puntos++; }
-                    else{ puntos--; }
-                    
+                    //state.innerHTML = "<strong>" + layer[0].feature.properties.name + "</strong>"; // Muestra el estado en la esquina superior derecha
+                    if(layer[0].feature.properties.name == respuesta) { 
+                      if(extra){puntos++;}
+                      puntos++; 
+                      window.alert("Acierto"); 
+                      // Si acertamos generamos las siguientes preguntas y respuestas
+                      num = Math.round(Math.random()*10);
+                      pregunta = preguntas[num];
+                      campo_pregunta.innerHTML = " <strong>" + pregunta + "</strong>"; 
+                      respuesta = respuestas[num];
+                      campo_respuesta.innerHTML = " Pulsa para pista ";
+                    }
+                    else{ 
+                      puntos--; 
+                      window.alert("Fallo, el seleccionado es " + layer[0].feature.properties.name);
+                    }
+                    // Una vez actualizada la puntuación la mostramos
                     puntuacion.innerHTML = "Puntuación: <strong>" + puntos + "</strong>"; 
-
+                                      
                   } else {
-                    state.innerHTML = '';
+                    //state.innerHTML = ''; // Muestra el estado en la esquina superior derecha
+                    campo_respuesta.innerHTML = " <strong> Fuera de USA </strong>"; 
                   }
               });
           }
       });
+      </script>
+
+      <script>
+        $("#respuesta").click(function() {
+          campo_respuesta.innerHTML = " <strong>" + respuesta + "</strong>"; 
+          extra=false;
+        });
       </script>
 
   </body>
