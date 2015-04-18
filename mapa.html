@@ -31,7 +31,8 @@
       <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'></script>
 
-      <div class="index"  > <a href="index.html"> INICIO </a> </div>
+
+      <div class="index"><a href="index.html"> INICIO </a> </div>      
       <div class="puntuacion" id="puntuacion">Puntuación</div> 
 
       <div>  
@@ -81,11 +82,12 @@
               .on('dragend', function(e) {
                   var layer = leafletPip.pointInLayer(this.getLatLng(), states, true);
                   if (layer.length) {
+                    campo_respuesta.innerHTML = " Pulsa para pista ";
                     //state.innerHTML = "<strong>" + layer[0].feature.properties.name + "</strong>"; // Muestra el estado en la esquina superior derecha
                     if(layer[0].feature.properties.name == respuesta) { 
                       if(extra){puntos++;}
                       puntos++; 
-                      window.alert("Acierto"); 
+                      window.alert("Correcto"); 
                       // Si acertamos generamos las siguientes preguntas y respuestas
                       num = Math.round(Math.random()*10);
                       pregunta = preguntas[num];
