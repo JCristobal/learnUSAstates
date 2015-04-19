@@ -9,7 +9,7 @@ Si no tienes ni idea de sus ubicaciones mira el ["Mapa de consulta"](http://jcri
 
 Puedes acceder a él a su [versión web aquí.](http://jcristobal.github.io/learnUSAstates/index.html)
 
-Puedes ver pantallazos del mapa con un ejemplo de ![pregunta](http://i.imgur.com/OXSNAvU.png) y su ![respuesta](http://i.imgur.com/PE2IzMw.png)
+Puedes ver pantallazos del mapa con un ejemplo de ![pregunta](http://i.imgur.com/OXSNAvU.png) y su ![respuesta](http://i.imgur.com/fxRDnia.png)
 
 ***
 
