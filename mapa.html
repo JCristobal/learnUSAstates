@@ -79,7 +79,14 @@
                       if(layer[0].feature.properties.name == respuesta) { 
                         if(extra){puntos++;}
                         puntos++; 
-                        if (alertas) {window.alert("Correcto, es "+ layer[0].feature.properties.name); }
+                        if (alertas) {
+                          swal({
+                            title: "Correcto",
+                            text: "El estado era "+layer[0].feature.properties.name,
+                            html: true,
+                            type: "success"
+                          });
+                        }
                         // Si acertamos generamos las siguientes preguntas y respuestas
                         num = Math.round(Math.random()*10);
                         pregunta = preguntas[num];
@@ -89,7 +96,14 @@
                       }
                       else{ 
                         puntos--; 
-                        if (alertas) { window.alert("Fallo, el seleccionado es " + layer[0].feature.properties.name); }
+                        if (alertas) { 
+                          swal({
+                            title: "Fallo",
+                            text: "El seleccionado es "+layer[0].feature.properties.name,
+                            html: true,
+                            type: "error"
+                          });
+                      }
                       }
                     // Una vez actualizada la puntuación la mostramos
                     puntuacion.innerHTML = "Puntuación: <strong>" + puntos + "</strong>"; 
@@ -113,7 +127,7 @@
         $("#alertas").click(function() {
           if(alertas){
             alertas=false;
-            window.alert("Alertas desactivadas"); // Si, te avisa que no hay alertas con una alerta
+            swal("Alertas desactivadas");  // Si, te avisa que no hay alertas con una alerta
             campo_alertas.innerHTML = " Activar alertas "; 
           }
           else{
@@ -123,6 +137,9 @@
         });
       </script>
 
+      <!-- Alertas personalizadas "SweetAlert"-->
+      <script src="dist/sweetalert.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
   </body>
 
 </html>
