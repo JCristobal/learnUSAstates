@@ -40,8 +40,8 @@
           .setView([40, -100], 3);
 
 
-      var preguntas = ["Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska"]; 
-      var respuestas = ["Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska"]; 
+      var preguntas = ["¿Qué estado tiene como capital Denver?","¿Donde se desarrolla la serie Dexter?","¿Estado más poblado y donde se encuentra Hollywood?","¿Qué estado hay al norte de Dakota del Sur?","Estado donde pertenecen los Houston Rockets","Ubicación del equipo de Futbol New York City FC","¿Estado originario de George W. Bush?","Su capital es Juneau y es 'inaccesible por tierra'","Estado originario del primer presidente de USA","Estado cuyo nombre es originario de la palabra 'yuta'","¿Donde despegó la misión Apollo 11?"]; 
+      var respuestas = ["Colorado","Florida","California","North Dakota","Texas","New York","Connecticut","Alaska","Washington","Utah","Florida"]; 
 
       // Generamos la primera pregunta y respuesta
       var num = Math.round(Math.random()*10);
@@ -79,7 +79,7 @@
                       if(layer[0].feature.properties.name == respuesta) { 
                         if(extra){puntos++;}
                         puntos++; 
-                        if (alertas) {window.alert("Correcto")}
+                        if (alertas) {window.alert("Correcto, es "+ layer[0].feature.properties.name); }
                         // Si acertamos generamos las siguientes preguntas y respuestas
                         num = Math.round(Math.random()*10);
                         pregunta = preguntas[num];
