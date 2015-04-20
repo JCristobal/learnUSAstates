@@ -1,0 +1,97 @@
+  
+body { 
+	margin:0; padding:0; 
+}
+  
+#map { 
+	position:absolute; top:0; bottom:0; width:100%; 
+}
+
+.state {
+	position:absolute;
+	top:10px;
+	right:10px;
+	z-index:1000;
+}
+.state strong {
+	background:#404040;
+	color:#fff;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+}
+
+.index {
+	position:absolute;
+	top: 10px;
+	left:45px;
+	z-index:1000;
+
+	background: rgb(176,205,190);
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+}
+.index a {
+	text-decoration: none;
+	color: black;
+}
+
+.pregunta {
+	position:absolute;
+	bottom: 110px;
+	left:10px;
+	z-index:1000;
+	max-width: 33%;
+
+	background:#F57C00;
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+}
+
+
+.respuesta {
+	position:absolute;
+	bottom:50px;
+	left:10px;
+	z-index:1000;
+
+	background:#F57C00;
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
+}
+
+.puntuacion {
+	position:absolute;
+	top:10px;
+	right:10px;
+	z-index:1000;
+
+	background: rgb(227,0,51);
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
+}
+
+.alertas {
+	position:absolute;
+	bottom:50px;
+	right:10px;
+	z-index:1000;
+
+	background: rgb(227,0,51);
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
+}
+
