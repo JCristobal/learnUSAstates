@@ -80,3 +80,18 @@ body {
 	border-radius:3px;
 
 }
+
+.alertas {
+	position:absolute;
+	bottom:50px;
+	right:10px;
+	z-index:1000;
+
+	background: rgb(227,0,51);
+	color:#000;
+	display:block;
+	padding:10px;
+	border-radius:3px;
+
+}
+
