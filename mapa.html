@@ -17,17 +17,6 @@
 
   <body >
 
-      <!--
-        This example requires jQuery to load the file with AJAX.
-        You can use another tool for AJAX.
-
-        This pulls the file airports.csv, converts into into GeoJSON by autodetecting
-        the latitude and longitude columns, and adds it to the map.
-
-        Another CSV that you use will also need to contain latitude and longitude
-        columns, and they must be similarly named.
-      -->
-
       <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.0.2/leaflet-pip.js'></script>
 
@@ -41,13 +30,12 @@
       </div>
 
       <div id="map"></div>
-      <!-- <div id="state" class="state"></div>   Inhabilitado: Muestra el estado en la esquina superior derecha -->
 
       <script>
       L.mapbox.accessToken = 'pk.eyJ1IjoiamNyaXN0b2JhbCIsImEiOiJPSThSUV9jIn0.m-kxm7LLy_irp3Of5OkSVA';
       var state = document.getElementById("state");
       var map = L.mapbox.map('map', 'jcristobal.lo5ibb1l') 
-          .setView([40, -110], 4);
+          .setView([40, -100], 3);
 
 
       var preguntas = ["Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska","Wyoming","Colorado","Kansas","Nebraska"]; 
@@ -83,27 +71,25 @@
                   var layer = leafletPip.pointInLayer(this.getLatLng(), states, true);
                   if (layer.length) {
                     campo_respuesta.innerHTML = " Pulsa para pista ";
-                    //state.innerHTML = "<strong>" + layer[0].feature.properties.name + "</strong>"; // Muestra el estado en la esquina superior derecha
-                    if(layer[0].feature.properties.name == respuesta) { 
-                      if(extra){puntos++;}
-                      puntos++; 
-                      window.alert("Correcto"); 
-                      // Si acertamos generamos las siguientes preguntas y respuestas
-                      num = Math.round(Math.random()*10);
-                      pregunta = preguntas[num];
-                      campo_pregunta.innerHTML = " <strong>" + pregunta + "</strong>"; 
-                      respuesta = respuestas[num];
-                      campo_respuesta.innerHTML = " Pulsa para pista ";
-                    }
-                    else{ 
-                      puntos--; 
-                      window.alert("Fallo, el seleccionado es " + layer[0].feature.properties.name);
-                    }
+                      if(layer[0].feature.properties.name == respuesta) { 
+                        if(extra){puntos++;}
+                        puntos++; 
+                        window.alert("Correcto"); 
+                        // Si acertamos generamos las siguientes preguntas y respuestas
+                        num = Math.round(Math.random()*10);
+                        pregunta = preguntas[num];
+                        campo_pregunta.innerHTML = " <strong>" + pregunta + "</strong>"; 
+                        respuesta = respuestas[num];
+                        campo_respuesta.innerHTML = " Pulsa para pista ";
+                      }
+                      else{ 
+                        puntos--; 
+                        window.alert("Fallo, el seleccionado es " + layer[0].feature.properties.name);
+                      }
                     // Una vez actualizada la puntuación la mostramos
                     puntuacion.innerHTML = "Puntuación: <strong>" + puntos + "</strong>"; 
                                       
                   } else {
-                    //state.innerHTML = ''; // Muestra el estado en la esquina superior derecha
                     campo_respuesta.innerHTML = " <strong> Fuera de USA </strong>"; 
                   }
               });
