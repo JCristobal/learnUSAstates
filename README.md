@@ -11,6 +11,12 @@ Puedes acceder a él a su [versión web aquí.](http://jcristobal.github.io/lear
 
 Puedes ver pantallazos del mapa con un ejemplo de pregunta ![pregunta](http://i.imgur.com/OXSNAvU.png) y su respuesta ![respuesta](http://i.imgur.com/fxRDnia.png)
 
+
+***
+
+Para descargarte la aplicación para Android o Windows Phone [aquí](https://build.phonegap.com/apps/1421143/share).
+
+
 ***
 
 Autor: J. Cristóbal López Zafra, @JCristobal en GitHub y con correo de contacto tobas92@gmail.com
