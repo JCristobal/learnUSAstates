@@ -1,4 +1,11 @@
 # learnUSAstates
+
+***
+
+
+
+***
+
 Aplicación para aprender sobre los distintos estados de USA
 
 A la derecha del mapa principal podrás ver una pregunta sobre un estado de América. Seleccionalo correctamente arrastrando el puntero rojo y ganarás 2 puntos. Puedes consultar la "pista" si no lo sabes, pero con tu acierto ganarás un punto. Cada vez que falles se te restará un punto.
@@ -14,9 +21,6 @@ Puedes ver pantallazos del mapa con un ejemplo de pregunta ![pregunta](http://i.
 
 ***
 
-Para descargarte la aplicación para Android o Windows Phone [aquí](https://build.phonegap.com/apps/1421143/share).
 
-
-***
 
 Autor: J. Cristóbal López Zafra, @JCristobal en GitHub y con correo de contacto tobas92@gmail.com
