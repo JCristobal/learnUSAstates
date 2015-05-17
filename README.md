@@ -2,6 +2,7 @@
 
 ***
 
+Para descargarte la aplicación para ANDROIDD o WINDOWS PHONE [aquí](https://build.phonegap.com/apps/1421143/share).
 
 
 ***
